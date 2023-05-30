@@ -5,7 +5,7 @@ spring:
   datasource:
     username: root
     password: 1234
-    url: jdbc:mysql://localhost:3306/stock:
+    url: jdbc:mysql://localhost:3306/stock
     show-sql: true
     open-in-view: false
     properties:
