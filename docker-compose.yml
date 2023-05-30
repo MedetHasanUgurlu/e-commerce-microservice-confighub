@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  kafka:
+    container_name: kafka
+    image: bashj79/kafka-kraft
+    ports:
+      - "9092:9092"
+    volumes:
+      - kafka_data:/opt/kafka/kafka-logs
+    environment:
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://192.168.1.101:9092
+
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+
+  stockdb:
+    container_name: stock-db
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345
+      - MYSQL_TCP_PORT=3306
+      - VIRTUAL_PORT=3306
+    volumes:
+      - stockdb_data:/data/db
+
+
+volumes:
+  kafka_data:
+  mongodb_data:
+  stockdb_data:
+  
