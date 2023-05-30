@@ -4,8 +4,8 @@ spring:
 
   datasource:
     username: root
-    password: 1234
-    url: jdbc:mysql://localhost:3306/stockdb
+    password: 12345
+    url: jdbc:mysql://localhost:3300/stockdb?createDatabaseIfNotExist=true
 
   jpa:
     show-sql: true
