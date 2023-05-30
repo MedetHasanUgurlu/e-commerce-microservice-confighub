@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: filter-service
+  data:
+    mongodb:
+      database: filter-db
+      uri: mongodb://192.168.1.100:27027
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
+      bootstrap-servers: http://192.168.1.100:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: "*"
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.value}
+    prefer-ip-address: true
+server:
+  port: 0
